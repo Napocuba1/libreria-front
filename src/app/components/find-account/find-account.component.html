@@ -1,0 +1,19 @@
+<form>
+    <div class="form-group row">
+
+        <div class="col">
+            <input id="" name="" type="text" class="form-control" #email>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="offset-4 col-8">
+            <button type="button" class="btn btn-primary float-left" (click)="sendEmail(email.value)">Aceptar</button>
+        </div>
+        <div *ngIf="emailok" class="alert alert-success" role="alert">
+            Se ha enviado un correo para reestablecer la contraseña
+        </div>
+        <div *ngIf="emailnok" class="alert alert-danger" role="alert">
+            El correo no se encuentra registrado
+        </div>
+    </div>
+</form>

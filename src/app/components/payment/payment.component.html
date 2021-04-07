@@ -1,0 +1,45 @@
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">Orden</h1>
+
+    </div>
+</div>
+
+<app-cart>
+
+</app-cart>
+<hr>
+<h1>Total: {{total|currency}}</h1>
+<form novalidate>
+    <input type="text" formControlName="name" placeholder="Jane Doe">
+    <ngx-stripe-card [options]="cardOptions" [elementsOptions]="elementsOptions"></ngx-stripe-card>
+    <button class="btn-outline-success" type="button" (click)="createToken()" data-toggle="modal" data-target="#staticBackdrop">
+      Pagar
+    </button>
+</form>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Confirmación de pago</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body">
+                <h2>Confirma que quiere realizar el pago por Bs: {{total}}</h2>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" (click)="confirm()">Confirmar</button>
+                <button type="button" class="btn btn-outline-danger" (click)="cancel()">Cancelar</button>
+            </div>
+            <div class="modal-footer">
+                <h3>{{message}}</h3>
+                <button *ngIf="btn" type="button" class="btn btn-primary" (click)="redirect()">Pagina Principal</button>
+            </div>
+
+        </div>
+    </div>
+</div>

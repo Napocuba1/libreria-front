@@ -1,0 +1,20 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Producto</th>
+            <th scope="col">Precio Unitario</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let cart of carrito">
+            <th>{{cart.product}}</th>
+            <td>{{cart.unit_price}}</td>
+            <td>{{cart.quantity}}</td>
+            <td>{{cart.total}}</td>
+        </tr>
+
+
+    </tbody>
+</table>

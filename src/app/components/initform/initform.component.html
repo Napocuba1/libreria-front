@@ -1,0 +1,80 @@
+<div *ngIf="alert" class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Intentalo de nuevo</strong> no repetiste la contraseña
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<form>
+
+    <div class="form-group row">
+        <label for="username" class="col-4 col-form-label">Nombre de usuario</label>
+        <div class="col-8">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <i class="fa fa-user-circle"></i>
+                    </div>
+                </div>
+                <input id="username" name="username" type="text" class="form-control" required="required" #username>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="email" class="col-4 col-form-label">Correo electrónico</label>
+        <div class="col-8">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <i class="fa fa-envelope"></i>
+                    </div>
+                </div>
+                <input id="email" name="email" type="text" class="form-control" #email>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="password" class="col-4 col-form-label">Contraseña</label>
+        <div class="col-8">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <i class="fa fa-lock"></i>
+                    </div>
+                </div>
+                <input id="password" name="password" type="text" class="form-control" required="required" #password>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="password2" class="col-4 col-form-label">Repetir contraseña</label>
+        <div class="col-8">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <i class="fa fa-lock"></i>
+                    </div>
+                </div>
+                <input id="password2" name="password2" type="text" class="form-control" required="required" #password2>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="username" class="col-4 col-form-label">Telefono</label>
+        <div class="col-8">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <i class="fa fa-user-circle"></i>
+                    </div>
+                </div>
+                <input id="username" name="username" type="text" class="form-control" required="required" #phone>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="offset-4 col-8">
+            <button name="submit" type="button" (click)="register2(username.value, email.value, password.value, password2.value, phone.value)" class="btn btn-info">Registrar</button>
+        </div>
+    </div>
+</form>

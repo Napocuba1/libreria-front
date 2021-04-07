@@ -1,0 +1,78 @@
+<form>
+    <div class="form-group row">
+        <label class="col-4 col-form-label" for="name">Nombre(s)</label>
+        <div class="col-8">
+            <input id="name" name="name" type="text" class="form-control" required="required" #name>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="surname" class="col-4 col-form-label">Primer apellido</label>
+        <div class="col-8">
+            <input id="surname" name="surname" type="text" class="form-control" required="required" #surname>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="document" class="col-4 col-form-label">Documento de identidad</label>
+        <div class="col-8">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <i class="fa fa-address-card"></i>
+                    </div>
+                </div>
+                <input id="document" name="document" placeholder="Número de documento de identidad" type="text" class="form-control" required="required" #document>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="birth" class="col-4 col-form-label">Fecha de nacimiento</label>
+        <div class="col-8">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <i class="fa fa-birthday-cake"></i>
+                    </div>
+                </div>
+                <input id="birth" name="birth" type="text" class="form-control" #birth>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="zone" class="col-4 col-form-label">Dirección</label>
+        <div class="col-8">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <i class="fa fa-home"></i>
+                    </div>
+                </div>
+                <input id="zone" name="zone" type="text" class="form-control" #zone>
+                <div class="input-group-append">
+                    <div class="input-group-text">Zona</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="street" class="col-4 col-form-label"></label>
+        <div class="col-8">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <i class="fa fa-home"></i>
+                    </div>
+                </div>
+                <input id="street" name="street" type="text" class="form-control" #street>
+                <div class="input-group-append">
+                    <div class="input-group-text">Calle</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="offset-4 col-8">
+            <button name="submit" type="button" (click)="register(name.value, surname.value, document.value, birth.value, zone.value, street.value)" class="btn btn-info">Registrar</button>
+        </div>
+    </div>
+</form>

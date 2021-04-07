@@ -1,0 +1,9 @@
+<div class="container m-5">
+    <img src="" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,| mt-5}">
+</div>
+
+
+<div class="list-group" *ngIf="this.globaldata.logged">
+    <a (click)="gotocat(categoria.category_name)" *ngFor="let categoria of categories" class="list-group-item" #category>{{categoria.category_name}}</a>
+
+</div>

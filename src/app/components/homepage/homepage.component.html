@@ -1,0 +1,21 @@
+<div class="row">
+
+    <div *ngFor="let libro of libros" class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100" (click)="producto(libro.product_name) ">
+            <a><img class="card-img-top" src="{{libro.image}}" alt=""></a>
+            <div class="card-body">
+                <h4 class="card-title">
+                    <a class="link">{{libro.product_name}}</a>
+                </h4>
+                <h5>{{libro.unit_price}} $</h5>
+                <p class="card-text">{{libro.product_description}}</p>
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">{{libro.author}}</small>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<!-- /.row -->

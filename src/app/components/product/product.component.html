@@ -1,0 +1,29 @@
+<div class="col-lg-9">
+
+    <div class="card mt-4">
+        <img class="card-img-top img-fluid" src="{{libro.image}}" alt="">
+        <div class="card-body">
+            <h3 class="card-title">{{libro.product_name}}</h3>
+            <h4>{{libro.unit_price| currency}}</h4>
+            <p class="card-text">{{libro.product_description}}</p>
+            <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span> 4.0 stars
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Cantidad</label>
+                <select class="form-control" id="exampleFormControlSelect1" #qtty>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+            </div>
+            <button type="button" class="btn btn-success" (click)="addCart(libro,qtty.value)">Agregar al Carrito</button>
+            <div *ngIf="add" class="alert alert-success" role="alert">
+                Se ha añadido el producto al carrito
+            </div>
+
+        </div>
+    </div>
+
+
+</div>

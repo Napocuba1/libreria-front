@@ -1,0 +1,131 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Buscar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <form class="form-inline my-2 my-lg-0" formGroup="">
+            <input (keyup)="buscarProveedores(termino.value)" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" #termino>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="button" (click)="buscarProveedores(termino.value)">Buscar</button>
+            <button class="btn btn-info m-2 my-sm-0 float-right" type="button" routerLink="addprov">Nuevo proveedor</button>
+        </form>
+    </div>
+</nav>
+
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+
+            <th scope="col">Empresa</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let proveedor of providers">
+            <th scope="row">{{proveedor.provider_id}}</th>
+            <td><button type="button" class="btn btn-dark" data-toggle="modal" data-target="#ContactModal" (click)="loadModal(proveedor.provider_id, proveedor.provider_name, proveedor.provider_zone, proveedor.provider_street, proveedor.email, proveedor.phone, proveedor.phone2)">
+                Proveedor {{proveedor.provider_id}}</button></td>
+
+            <td>{{proveedor.provider_name}}</td>
+            <td>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-info">
+                  <input type="radio" name="options" id="option1" checked data-toggle="modal" data-target="#editModal" (click)="loadModal(proveedor.provider_id, proveedor.provider_name, proveedor.provider_zone, proveedor.provider_street, proveedor.email, proveedor.phone, proveedor.phone2)"
+                  > Editar
+                  </label>
+                    <label class="btn btn-danger">
+                  <input type="radio" name="options" id="option2" (click)="deleteprov(proveedor.provider_id)" data-dismiss="modal"> Eliminar
+                </label>
+
+                </div>
+            </td>
+
+            <!-- Modal -->
+            <div class="modal fade" id="ContactModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-black-50" id="exampleModalLabel">Informacion de contacto: {{clickedprov.name}}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+                        </div>
+                        <div class="modal-body text-black-50">
+                            <ul>
+
+                                <li>Email: {{clickedprov.email}}</li>
+                                <li>Teléfonos: {{clickedprov.phone}}</li>
+                                <li>{{clickedprov.phone2}}</li>
+                                <li>Direccion: {{clickedprov.zone}}</li>
+                                <li>{{clickedprov.street}}</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-black-50" id="exampleModalLabel">Informacion de contacto: {{clickedprov.name}}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+                        </div>
+                        <div class="modal-body text-black-50">
+                            <div class="form-group row">
+                                <label for="text" class="col-4 col-form-label">Nombre</label>
+                                <div class="col-8">
+                                    <input id="text" name="text" type="text" class="form-control" #name value="{{clickedprov.name}}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="text" class="col-4 col-form-label">Zona</label>
+                                <div class="col-8">
+                                    <input id="text" name="text" type="text" class="form-control" #zone value="{{clickedprov.zone}}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="" class="col-4 col-form-label">Calle</label>
+                                <div class="col-8">
+                                    <input id="" name="" type="text" class="form-control" #street value="{{clickedprov.street}}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="" class="col-4 col-form-label">Email</label>
+                                <div class="col-8">
+                                    <input id="" name="" type="text" class="form-control" #email value="{{clickedprov.email}}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="" class="col-4 col-form-label">Teléfono</label>
+                                <div class="col-8">
+                                    <input id="" name="" type="text" class="form-control" #phone value="{{clickedprov.phone}}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="text1" class="col-4 col-form-label">Celular</label>
+                                <div class="col-8">
+                                    <input id="text1" name="text1" type="text" class="form-control" #phone2 value="{{clickedprov.phone2}}">
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-info" data-dismiss="modal" (click)="editprov(proveedor.provider_id, name.value,zone.value,street.value,email.value,phone.value,phone2.value)">Editar</button>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </tr>
+
+    </tbody>
+</table>
